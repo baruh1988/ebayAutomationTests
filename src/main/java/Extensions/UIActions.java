@@ -4,6 +4,7 @@ import Utils.CommonOps;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -22,6 +23,11 @@ public class UIActions extends CommonOps {
     @Step("Send keys to element")
     public static void sendKeysToElement(WebElement webElement, String keysToSend) {
         webElement.sendKeys(keysToSend);
+    }
+
+    @Step("Send ENTER key to element")
+    public static void pressEnter(WebElement webElement) {
+        webElement.sendKeys(Keys.ENTER);
     }
 
     @Step("Scroll to web element")
@@ -48,6 +54,16 @@ public class UIActions extends CommonOps {
     @Step("Click on body")
     public static void clickBody() {
         driver.findElement(By.cssSelector("body")).click();
+    }
+
+    @Step("Switch to last tab")
+    public static void goToNextTab() {
+        driver.getWindowHandles().forEach( tab -> driver.switchTo().window(tab));
+    }
+
+    @Step("Close current tab")
+    public static void closeTab() {
+        driver.close();
     }
 
 }

@@ -23,24 +23,9 @@ public class EbayLoginWorkFlow extends CommonOps {
 
     @Step("Login to ebay")
     public static void loginToEbay(String userName, String pass) {
-        goToLoginPage();
+        EbayHomePageWorkFlow.goToLoginPage();
         enterUserName(userName);
         enterPassword(pass);
-    }
-
-    @Step("Go to registration page")
-    public static void goToRegistrationPage() {
-        UIActions.clickElement(homePage.getRegisterLink());
-    }
-
-    @Step("Go to login page")
-    public static void goToLoginPage() {
-        UIActions.clickElement(homePage.getSignInLink());
-    }
-
-    @Step("Go to home page")
-    public static void goToHomePage() {
-        UIActions.clickElement(homePage.getLogo());
     }
 
 }
