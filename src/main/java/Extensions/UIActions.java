@@ -1,12 +1,14 @@
 package Extensions;
 
 import Utils.CommonOps;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+import java.io.ByteArrayInputStream;
 
 public class UIActions extends CommonOps {
 
@@ -64,6 +66,12 @@ public class UIActions extends CommonOps {
     @Step("Close current tab")
     public static void closeTab() {
         driver.close();
+    }
+
+    @BeforeMethod
+    @AfterMethod
+    public void takeScreenshot() {
+        Allure.addAttachment("", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 
 }

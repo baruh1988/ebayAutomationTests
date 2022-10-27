@@ -1,7 +1,7 @@
 package WorkFlows;
 
 import Extensions.UIActions;
-import Pages.EbaySearchResultsPage;
+import Pages.EbayItemPage;
 import Utils.CommonOps;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
@@ -12,18 +12,11 @@ import org.testng.annotations.BeforeMethod;
 
 import java.io.ByteArrayInputStream;
 
-public class EbaySearchWorkFlow extends CommonOps {
+public class EbayCartWorkFlow extends CommonOps {
 
-    @Step("Preform search")
-    public static void search(String term) {
-        UIActions.sendKeysToElement(homePage.getSearchField(), term);
-        UIActions.pressEnter(homePage.getSearchField());
-    }
-
-    @Step("Pick first item")
-    public static void pickFirstItem() {
-        UIActions.clickElement(EbaySearchResultsPage.getFilterBuyNow());
-        UIActions.clickElement(EbaySearchResultsPage.getResults().get(0));
+    @Step("Add item to cart")
+    public static void addItemToCart() {
+        UIActions.clickElement(EbayItemPage.getAddToCartBtn());
     }
 
     @BeforeMethod

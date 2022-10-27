@@ -3,6 +3,11 @@ package Utils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
+//import org.apache.poi.ss.usermodel.DataFormatter;
+//import org.apache.poi.xssf.usermodel.XSSFCell;
+//import org.apache.poi.xssf.usermodel.XSSFRow;
+//import org.apache.poi.xssf.usermodel.XSSFSheet;
+//import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +20,7 @@ import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -31,6 +37,7 @@ public class CommonOps extends Variables {
     }
 
     @BeforeMethod
+    @AfterMethod
     public void takeScreenshot() {
         Allure.addAttachment("", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }

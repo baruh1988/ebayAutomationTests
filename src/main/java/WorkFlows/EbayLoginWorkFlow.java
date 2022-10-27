@@ -2,7 +2,14 @@ package WorkFlows;
 
 import Extensions.UIActions;
 import Utils.CommonOps;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+import java.io.ByteArrayInputStream;
 
 public class EbayLoginWorkFlow extends CommonOps {
 
@@ -26,6 +33,12 @@ public class EbayLoginWorkFlow extends CommonOps {
         EbayHomePageWorkFlow.goToLoginPage();
         enterUserName(userName);
         enterPassword(pass);
+    }
+
+    @BeforeMethod
+    @AfterMethod
+    public void takeScreenshot() {
+        Allure.addAttachment("", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 
 }

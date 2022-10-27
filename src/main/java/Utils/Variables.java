@@ -15,7 +15,6 @@ public class Variables {
     protected static String timeout;
     protected static String browserName;
     protected static WebDriver driver;
-
     protected static EbayHomePage homePage;
     protected static EbayLoginPage loginPage;
     protected static EbayItemPage itemPage;
